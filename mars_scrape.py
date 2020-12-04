@@ -7,11 +7,11 @@ import pymongo
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "chromedriver.exe"}
-    return Browser("chrome", **executable_path, headless=False)
+    return Browser("chrome", executable_path, headless=False)
 
 def scrape():
     browser = init_browser()
-    mars_dict ={}
+    mars ={}
 
     # Mars News URL of page to be scraped
     news_url = 'https://mars.nasa.gov/news/'
@@ -28,7 +28,7 @@ def scrape():
     browser.visit(images_url)
     html = browser.html
     images_soup = BeautifulSoup(html, 'html.parser')
-    # Retrieve featured image link
+    # Retriev e featured image link
     relative_image_path = images_soup.find_all('img')[3]["src"]
     featured_image_url = jpl_nasa_url + relative_image_path
 
