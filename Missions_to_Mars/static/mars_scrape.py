@@ -4,9 +4,8 @@ import pandas as pd
 import datetime as dt 
 
 def scrape_all():
-    browser = Browser("chrome", executable_path="chromedriver.exe", headless=True)
-    
-    news_title, news_paragraph = mars_news(browser)
+    browser = Browser("chrome", executable_path="chromedriver", headless=True)
+    news_title, news_paragraph = mars_news(browser)      
 
     data = {
         "news_title": news_title, 
@@ -47,7 +46,7 @@ def featured_image(browser):
     html = browser.html
     img_soup = soup(html, 'html.parser')     
 
-    img_url = img_soup = soup(html, 'html.parser') = img_soup.select_one("figure.lede a img").get("src")
+    img_url = img_soup.select_one("figure.lede a img").get("src")
     return img_url
 
 
