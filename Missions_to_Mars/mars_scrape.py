@@ -104,11 +104,6 @@ def scrape_hemisphere(html_text):
 
     return hemispheres
 
-
-
-
-
-
 if __name__ == "__main__":
 
     # If running as script, print scraped data
