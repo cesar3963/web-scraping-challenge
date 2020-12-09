@@ -4,7 +4,7 @@ import pandas as pd
 import datetime as dt 
 
 def scrape_all():
-    browser = Browser("chrome", executable_path="chromedriver", headless=True)
+    browser = Browser("chrome", executable_path="C:/Users/cesar/Documents/GitHub/web-scraping-challenge/Missions_to_Mars/static/chromedriver.exe", headless=True)
     news_title, news_paragraph = mars_news(browser)      
 
     data = {
