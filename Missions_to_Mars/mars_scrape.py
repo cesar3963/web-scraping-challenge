@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt 
 
-def mars():
-    browser = Browser("chrome", executable_path="chromedriver.exe", headless=True)
+def scrape_all():
+    browser = Browser("chrome", executable_path="chromedriver", headless=True)
     
     news_title, news_paragraph = mars_news(browser)      
-
+    #f'https://www.jpl.nasa.gov{img_url}'
     data = {
         "news_title": news_title, 
         "news_paragraph": news_paragraph,
@@ -55,15 +55,15 @@ def featured_image(browser):
     html = browser.html
     img_soup = soup(html, 'html.parser')     
 
-    try:
-        img_url = img_soup.select_one("figure.lede a img").get("src")
-    except AttributeError:
-        return None
-    img_url_ = f'https://www.jpl.nasa.gov{img_url}'
+    img_url_ = img_soup.select_one("figure.lede a img").get("src")
+        
+
+    
+    img_url = f'https://www.jpl.nasa.gov{img_url_}'
 
     return img_url
 
-
+#http://www.jpl.nasa.gov{your link}
 
 def mars_facts():
     try:
@@ -108,4 +108,4 @@ def scrape_hemisphere(html_text):
 if __name__ == "__main__":
 
     # If running as script, print scraped data
-    print(mars())
+    print(scrape_all())
