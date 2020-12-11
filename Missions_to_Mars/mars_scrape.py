@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt 
 
-def scrape_all():
+def mars():
     browser = Browser("chrome", executable_path="chromedriver.exe", headless=True)
     
     news_title, news_paragraph = mars_news(browser)      
@@ -16,6 +16,7 @@ def scrape_all():
         "hemispheres": hemispheres(browser),
         "last_modified": dt.datetime.now() 
     }
+    # mars=hemispheres
 
     browser.quit()
     return data
@@ -107,4 +108,4 @@ def scrape_hemisphere(html_text):
 if __name__ == "__main__":
 
     # If running as script, print scraped data
-    print(scrape_all())
+    print(mars())
